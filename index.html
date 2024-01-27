@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Curso de JavaScript</title>
+</head>
+<body>
+    <h1 class="titulo">Proyecto Final de JavaScript</h1>
+    <section class="contenedor-formulario">
+        <form id="form-user" action="#" method="post" enctype="multipart/form-data">
+            <!-- Input Nombre y Apellido -->
+            <div class="inputs-datos">
+                <label for="nombre"><p class="subtitulos-formulario">Nombre/s y Apellido/s</p></label>
+                <div class="contenedor-inputs">
+                    <input type="text" id="nombre-user" name="user_name" placeholder="Ingrese su nombre" class="ingreso-datos" required>
+                </div>
+            </div>
+            <!--Input Edad-->
+            <div class="inputs-datos">
+                <label for="edad"><p class="subtitulos-formulario">Edad</p></label>
+                <div class="contenedor-inputs">
+                    <input id="edad-user" type="number" placeholder="Ingrese su edad"
+                    class="ingreso-datos" required>
+                </div>
+            </div>
+            <!--Input DNI-->
+            <div class="inputs-datos">
+                <label for="dni"><p class="subtitulos-formulario">DNI</p></label>
+                <div class="contenedor-inputs">
+                    <input id="dni-user" type="number" placeholder="Ingrese su dni" class="ingreso-datos" required>
+                </div>
+            </div>
+            <!-- Comienzo Input Correo-->
+            <div class="inputs-datos">
+                <label for="mail"><p class="subtitulos-formulario">Correo electrónico</p></label>
+                <div class="contenedor-inputs">
+                    <input id="email-user" type="email" placeholder="Ingrese su correo electrónico" class="ingreso-datos" required>
+                </div>
+            </div>
+            <!--Input Ubicacion-->
+            <div class="inputs-datos">
+                <label for="ubicacion--"><p class="subtitulos-formulario">Ubicacion</p></label>
+                <div class="contenedor-inputs">
+                    <input type="text" id="ubicacion-user" name="user_name" placeholder="Ingrese su ubicacion geografica" class="ingreso-datos" required>
+                </div>
+            </div>
+            <div class="contenedor-Bot-Ag">
+                <input class="boton-agregar" type="submit" value="Agregar">
+            </div>
+        </form>
+    </section>
+    <!--Contenedor Tarjetas Usuarios nuevos-->
+    <div class="user-contenedor">
+
+    </div>
+    
+    <script type="module" src="/main.js"></script>
+</body>
+</html>
