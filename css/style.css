@@ -41,6 +41,7 @@
 .contenedor-Bot-Ag{
   display: flex;
   justify-content: center;
+  margin-top: 50px;
   margin-left: 150%;
 }
 
@@ -48,9 +49,9 @@
   display: flex;
   justify-content: center;
   background-color: transparent;
-  color: #4f88d0;
-  border: 2px solid #3a76bd;
-  border-radius: 20px;
+  color: black;
+  border: 2px solid black;
+  border-radius: 10px;
   padding: 10px;
 }
 
@@ -62,9 +63,28 @@
 }
 
 .card-user{
+  display: flex;
+  flex-direction: row;
   width: 60%;
   border: 2px solid #3a76bd;
   padding: 25px;
+}
+
+.foto-usuario{
+  width: 125px;
+  height: 125px;
+  border: 1px solid black;
+  margin-right: 35px;
+}
+
+.texto-usuario{
+  margin-bottom: 10px;
+}
+
+.contenedor-boton{
+  display: flex;
+  align-items: center;
+  margin-left: 75px;
 }
 
 .boton-eliminar{
@@ -73,5 +93,4 @@
   border: 2px solid black;
   border-radius: 10px;
   padding: 10px;
-  margin-top: 25px;
 }

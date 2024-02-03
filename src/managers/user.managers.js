@@ -8,30 +8,46 @@ import Swal from "sweetalert2";
 //Parseamos los usuarios nuevos registrados en el local storage
 let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [] ;
 
+//Llamamos a una API mediante el metodo fetch para usar sus fotos para cada usuario registrado
+fetch("https://rickandmortyapi.com/api/character/")
+    .then((resp) => resp.json())
+    .then((data) => console.log(data.results))
+
 const mostrarUsuario = (usuarios) => {
     htmlElements.userContenedor.innerHTML = "";
-    console.log(usuarios);
-
+    
     //Creamos una tarjeta por cada usuario nuevo registrado
     usuarios.forEach((usuario) => {
         let card = document.createElement("div");
         card.className = "card-user";
-        card.innerHTML = `<p>${usuario.data}<p>`;
+        card.innerHTML = `<img class="foto-usuario" src= ${usuario.imagen}<img/>`;
+        
+        //Creamos un contenedor para los textos dentro de la tarjeta
+        let textoContenedor = document.createElement("div");
+        textoContenedor.className = "contenedor-texto";
+        textoContenedor.innerHTML = `
+        <p class="texto-usuario">${usuario.data.nombre}</p>
+        <p class="texto-usuario">${usuario.data.edad}</p>
+        <p class="texto-usuario">${usuario.data.dni}</p>
+        <p class="texto-usuario">${usuario.data.email}</p>
+        <p class="texto-usuario">${usuario.data.ubicacion}<p>
+        `;
+        
+        card.appendChild(textoContenedor)
 
         //Creeamos un contenedor del boton eliminar dentro de la tarjeta
         let btnContenedor = document.createElement("div");
-
+        btnContenedor.className = "contenedor-boton";
+        
         card.appendChild(btnContenedor);
-
+        
         //Creamos un boton para eliminar usuarios dentro del contenedor de boton
         let btnEliminar = crearBoton("Eliminar", "boton-eliminar");
-
         //Agregamos un evento de click de elimar el usuario al boton de eliminar
-        btnEliminar.onclick = () => eliminarUsuario(user.id);
-
+        btnEliminar.onclick = () => eliminarUsuario(usuario.id);
         //Agregamos el boton de eliminar al boton de contenedor
         btnContenedor.appendChild(btnEliminar);
-
+        
         //Agregamos la tarjeta en general de los usuarios al div contenedor del index html
         htmlElements.userContenedor.appendChild(card);
     });
@@ -42,11 +58,9 @@ const agregarUsuario = () => {
     let userNuevo = crearUsuario(
         htmlElements.nombreUser.value, 
         htmlElements.edadUser.value, 
-        htmlElements.ubicacionUser.value,
-        htmlElements.generoUser.value,
         htmlElements.dniUser.value,
-        htmlElements.celUser.value,
-        htmlElements.emailUser.value
+        htmlElements.emailUser.value,
+        htmlElements.ubicacionUser.value
     );
     //Agregamos a el array vacio de usuarios la variable inicializada de arriba y lo guardamos en el local storage
     usuarios.push(userNuevo);
@@ -54,24 +68,7 @@ const agregarUsuario = () => {
 
     console.log(usuarios);
     
-    mostrarUsuario(usuarios);
-
-    //Mostramos un mensaje del usuario agregado
-    const Toast = Swal.mixin({
-        toast: true,
-        position: "bottom-start",
-        showConfirmButton: false,
-        timer: 1500,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-        toast.onmouseenter = Swal.stopTimer;
-        toast.onmouseleave = Swal.resumeTimer;
-        }
-    });
-    Toast.fire({
-        icon: "success",
-        title: "Signed in successfully"
-    });
+    mostrarUsuario(usuarios);    
 };
 
 const cambiarEstadoUsuario = (idUser) => {
